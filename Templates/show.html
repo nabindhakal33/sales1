@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div >
+        <a href="/" class="btn btn-primary my-4 ">Home</a>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Brought From</th>
+            <th>Sold To</th>
+            <th>Quantity</th>
+            <th>Cost Rate</th>
+            <th>Sold Rate</th>
+            <th>CP</th>
+            <th>SP</th>
+            <th>profit</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for item in items reversed %}
+        <tr>
+            <td>{{item.brought_from}}</td>
+            <td>{{item.sold_to}}</td>
+            <td>{{item.quantity}}</td>
+            <td>Rs {{item.c_rate}}</td>
+            <td>Rs {{item.s_rate}}</td>
+            <td>Rs {{item.cp}}</td>
+            <td>Rs {{item.sp}}</td>
+            <td>Rs {{item.profit}}</td>
+            <td>
+                <a href="/update/{{item.id}}" class="btn btn-sm btn-success mb-1 ">Update</a>
+                <a href="delete/{{item.id}}" class="btn btn-sm btn-danger mb-1">Delete </a>
+
+
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

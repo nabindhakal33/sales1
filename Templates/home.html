@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+      {% if user.is_authenticated %}
+      
+      
+      <a href="/logout" class="btn btn-danger mt-4">Logout</a>
+      
+      
+       <h1 style="text-align: center"><a href="{% url 'show' %}">Datas</a></h1>
+        <h1 style="text-align: center">Add new data</h1>
+        <div >
+            <form action="/senddata" method="post">
+               {% csrf_token %}
+                <div class="form-group w-50 mx-auto ">
+                    Brought From:
+                    <input type="text" name = "brought" class="form-control">
+                    Sold To:
+                    <input type="text" name = "sold" class="form-control">
+                    Quantity:
+                    <input type="text" name = "quantity" class="form-control">
+                    Cost Rate:
+                    <input type="text" name = "crate" class="form-control">
+                    Sold Rate:
+                    <input type="text" name = "srate" class="form-control">
+                    
+                    
+                    <button type="submit" class="btn btn-primary mt-5">Submit</button>
+                </div>
+            </form>
+        </div>
+        {% else %}
+        <h1>Please sign in first </h1>
+        <a href="/login" class="btn btn-success">Login</a>
+        {% endif %}
+    </div>
+{% endblock %}

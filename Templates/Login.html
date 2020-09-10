@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div style="text-align: center; margin-top: 50px">
+        <h6>Welcome, Login!</h6>
+    </div>
+
+    <form action="login" method="POST">
+        {% csrf_token %}
+        <div class="form-group w-50 mx-auto ">
+            <input type="text" placeholder="username" name="username" class="form-control mt-3">
+            <input type="password" placeholder="password" name="password" class="form-control mt-2">
+            <input type="submit" class="btn btn-outline-success mt-2">
+        </div>
+
+    </form>
+
+</div>
+
+<div class="row"> {% for msg in messages %}
+    <h6 style="color: red"> {{msg}} </h6>
+    {% endfor %}
+</div>
+
+
+
+</div>
+
+{% endblock %}

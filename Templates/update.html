@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <h1 class="dispaly-1 text-center">Update Your Data</h1>
+    <form action="/update/{{item.id}}" method="post">
+        {% csrf_token %}
+        <div class="form-group w-50 mx-auto ">
+            Brought From:
+            <input type="text" name="brought"  value="{{item.brought_from}}" class="form-control">
+            Sold To:
+            <input type="text" name="sold"  value="{{item.sold_to}}" class="form-control">
+            Quantity:
+            <input type="text" name="quantity"  value="{{item.quantity}}" class="form-control">
+            Cost Rate:
+            <input type="text" name="crate" value="{{item.c_rate}}" class="form-control">
+            Sold Rate:
+            <input type="text" name="srate"  value="{{item.s_rate}}" class="form-control">
+
+
+            <button type="submit" class="btn btn-primary mt-5">Submit</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
